@@ -1,0 +1,8 @@
+# render.yaml
+services:
+  - type: web
+    name: whatisakatie
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn run:app"
+    plan: free
