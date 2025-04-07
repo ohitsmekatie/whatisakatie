@@ -1,43 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}whatisakatie?{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %} what is a katie{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="d-flex flex-column min-vh-100">
 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand glitch-title nav-glitch" href="{{ url_for('index') }}">
+        <i class="fas fa-terminal me-2"></i> what is a katie
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">
+              <i class="fas fa-user me-1"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('projects') }}">
+              <i class="fas fa-code me-1"></i> Projects
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('resume') }}">
+              <i class="fas fa-file-alt me-1"></i> Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand glitch-title nav-glitch" href="{{ url_for('index') }}">what is a katie</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('resume') }}">Resume</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About me</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      
-      <main class="container my-5">
-        {% block content %}{% endblock %}
-      </main>
-      
-      <footer class="text-center py-4 mt-auto">
-        <div class="container">
-          <p>© 2025 ohitsmekatie • <a href="https://github.com/ohitsmekatie" target="_blank">GitHub</a></p>
-        </div>
-      </footer>
-      
-  </body>
+  <!-- Page Content -->
+  <main class="container my-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% if not hide_footer %}
+  <footer class="text-center py-4 mt-auto">
+    <div class="container">
+      <p>
+        © 2025 Katie • 
+        <a href="https://github.com/ohitsmekatie" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a> • 
+        <a href="https://linkedin.com/in/katiesipos" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a> • 
+        <a href="mailto:katie.sipos@gmail.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </p>
+    </div>
+  </footer>
+  {% endif %}
+
+  <!-- Terminal UI -->
+  <div class="side-terminal">
+    <div class="terminal-header">~ Terminal ~</div>
+    <div id="terminal-output" class="terminal-output"></div>
+    <div class="terminal-input-row">
+      <span class="prompt-symbol">&gt;</span>
+      <input id="terminal-input" type="text" placeholder="joke, fact, catfact, numberfact, clear, or help" />
+    </div>
+  </div>
+
+  <!-- Terminal Script -->
+  <script>
+    const input = document.getElementById('terminal-input');
+    const output = document.getElementById('terminal-output');
+
+    async function getJoke() {
+      const res = await fetch("https://icanhazdadjoke.com/", {
+        headers: { Accept: "application/json" }
+      });
+      const data = await res.json();
+      return data.joke;
+    }
+
+    async function getFact() {
+      const res = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en");
+      const data = await res.json();
+      return data.text;
+    }
+
+    async function getCatFact() {
+      const res = await fetch("https://catfact.ninja/fact");
+      const data = await res.json();
+      return data.fact;
+    }
+
+    async function getNumberFact() {
+      const res = await fetch("http://numbersapi.com/random/trivia?json");
+      const data = await res.json();
+      return data.text;
+    }
+
+    input.addEventListener('keydown', async function (e) {
+      if (e.key === 'Enter') {
+        const command = input.value.trim().toLowerCase();
+        input.value = '';
+
+        const inputLine = document.createElement('div');
+        inputLine.textContent = `> ${command}`;
+        output.appendChild(inputLine);
+
+        let message = '';
+
+        if (command === 'joke') {
+          message = await getJoke();
+        } else if (command === 'fact') {
+          message = await getFact();
+        } else if (command === 'catfact') {
+          message = await getCatFact();
+        } else if (command === 'numberfact') {
+          message = await getNumberFact();
+        } else if (command === 'clear') {
+          output.innerHTML = '';
+          return;
+        } else if (command === 'help') {
+          message = `Available commands:
+  - joke
+  - fact
+  - catfact
+  - numberfact
+  - help
+  - clear`;
+        } else {
+          message = 'Unknown command. Try "help" for a list.';
+        }
+
+        const responseLine = document.createElement('div');
+        responseLine.textContent = `> ${message}`;
+        output.appendChild(responseLine);
+        output.scrollTop = output.scrollHeight;
+      }
+    });
+  </script>
+</body>
 </html>
+
