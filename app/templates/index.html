@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}whatisakatie{% endblock %}
+{% block content %}
+
+<div class="intro-container text-center mx-auto">
+    <img src="{{ url_for('static', filename='your-picture.jpg') }}" class="img-fluid rounded-circle mb-4" alt="Katie's Picture" style="max-width: 200px;">
+    <h1 class="display-5 fw-bold">Hey, I’m Katie!</h1>
+    <p class="lead">✨ I build whimsical little web things, write odd RPGs, and occasionally yell at clouds. ✨</p>
+  </div>
+  
+
+{% endblock %}

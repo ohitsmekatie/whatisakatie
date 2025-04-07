@@ -1,0 +1,101 @@
+:root {
+    --primary: #1e3f66;   /* Deep Teal */
+    --accent: #4b7c8c;    /* Steel Blue */
+    --bg: #f4f8fb;        /* Very light blue-gray */
+    --text: #152636;      /* Dark navy-slate */
+    --light-bg: #e3ecf0;  /* Light steel blue */
+  }
+  
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+  }
+  
+  .navbar {
+    background-color: var(--primary);
+    border-bottom: 4px solid var(--accent);
+  }
+  
+  .navbar-brand,
+  .nav-link {
+    color: white !important;
+    font-weight: 600;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  footer {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    padding-top: 1rem;
+    border-top: 4px solid var(--accent);
+  }
+  
+  footer a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  img.rounded-circle {
+    border: 5px solid var(--accent);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  main {
+    padding-top: 2rem;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn-primary:hover {
+    background-color: #3da29c;
+    border-color: #3da29c;
+  }
+  
+  .card {
+    background-color: var(--light-bg);
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .intro-container {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 700px;
+    box-shadow: 0 0 30px rgba(76, 124, 140, 0.2);
+    border: 2px solid var(--accent);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .intro-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(76, 124, 140, 0.3);
+  }
+  
+  .intro-container h1 {
+    color: var(--primary);
+  }
+  
+  .intro-container p::before,
+  .intro-container p::after {
+    content: "✨";
+    margin: 0 0.25rem;
+    animation: twinkle 2s infinite ease-in-out alternate;
+  }
+  
+  @keyframes twinkle {
+    0%   { opacity: 0.4; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+  }
+  
