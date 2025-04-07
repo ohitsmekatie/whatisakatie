@@ -1,7 +1,23 @@
 {% extends "base.html" %}
-{% block title %}Resume - My Site{% endblock %}
+{% block title %}Resume - What Is A Katie{% endblock %}
+
 {% block content %}
-<h2>Resume</h2>
-<p>You can link a PDF or embed it here.</p>
-<a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-primary">Download Resume</a>
+<div class="text-center mb-4">
+  <h1 class="display-5" style="color: var(--pink); text-shadow: 0 0 3px var(--pink);">
+    My Resume
+  </h1>
+  <p style="color: var(--green);">
+    Need a PDF?
+    <a href="https://docs.google.com/document/d/1KNTtz2ZWWHWwTGBb5vE92ptp_U3vgyEHRN8ut-PQTBw/export?format=pdf" target="_blank" style="color: var(--blue);">
+      Download it here</a>
+  </p>
+</div>
+
+<div class="resume-embed-container mx-auto">
+  <iframe
+    src="https://docs.google.com/document/d/e/2PACX-1vRJFdqX2ZUhkVzRCXRMu2G-4qTx1FI0MteyBqx6updbGLjc89e5yrf5BnOn4UibsM4Qnr1hSQKMUcwl/pub?embedded=true"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+</div>
 {% endblock %}

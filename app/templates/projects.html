@@ -1,9 +1,86 @@
 {% extends "base.html" %}
-{% block title %}Projects - My Site{% endblock %}
+{% block title %}Projects - What Is A Katie{% endblock %}
+
 {% block content %}
-<h2>Projects</h2>
-<ul>
-  <li>Project 1 – A brief description</li>
-  <li>Project 2 – A brief description</li>
-</ul>
+<div class="text-center mb-5">
+  <h1 class="display-5" style="color: var(--pink); text-shadow: 0 0 3px var(--pink);">Projects</h1>
+  <p style="color: var(--green);">A few things I’ve built in this simulated universe...</p>
+</div>
+
+<div class="container">
+  <div class="row g-4">
+    <!-- Project 1 -->
+    <div class="col-md-4">
+      <div class="terminal-card">
+        <div class="terminal-screen">
+          <h2>✨ Lore & More</h2>
+          <ul>
+            <li>A random generator site for RPG game prep & world building.</li>
+            <li>Dynamic random inspo per page</li>
+            <li>Built with Flask + Google Sheets</li>
+          </ul>
+        </div>
+        <div class="terminal-links">
+          <a href="https://www.ohitsmetables.com" target="_blank">🌐 Live Site</a>
+          <a href="https://www.github.com/ohitsmekatie/ohitsmetables" target="_blank">💻 GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="col-md-4">
+      <div class="terminal-card">
+        <div class="terminal-screen">
+          <h2>✨ Another Project</h2>
+          <ul>
+            <li>Something fun and experimental</li>
+            <li>Built with cyber-sparkles</li>
+            <li>Hosted in the neon cloud</li>
+          </ul>
+        </div>
+        <div class="terminal-links">
+          <a href="#" target="_blank">💻 GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="col-md-4">
+      <div class="terminal-card">
+        <div class="terminal-screen">
+          <h2>✨ Another Cool Thing</h2>
+          <ul>
+            <li>Pixel-perfect dungeon generator</li>
+            <li>Connects to 80s hacker vibes</li>
+            <li>Made for dreamers & roguelikes</li>
+          </ul>
+        </div>
+        <div class="terminal-links">
+          <a href="#" target="_blank">🌐 Live Site</a>
+          <a href="#" target="_blank">💻 GitHub</a>
+        </div>
+      </div>
+    </div>
+
+        <!-- Project 4 -->
+        <div class="col-md-4">
+            <div class="terminal-card">
+              <div class="terminal-screen">
+                <h2>✨ Another Cool Thing</h2>
+                <ul>
+                  <li>Pixel-perfect dungeon generator</li>
+                  <li>Connects to 80s hacker vibes</li>
+                  <li>Made for dreamers & roguelikes</li>
+                </ul>
+              </div>
+              <div class="terminal-links">
+                <a href="#" target="_blank">🌐 Live Site</a>
+                <a href="#" target="_blank">💻 GitHub</a>
+              </div>
+            </div>
+          </div>
+
+  </div>
+</div>
 {% endblock %}
+
