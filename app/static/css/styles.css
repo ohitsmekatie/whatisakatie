@@ -61,10 +61,18 @@ main {
   text-shadow: 0 0 2px var(--pink), 0 0 4px var(--pink);
 }
 
-/* Glitch animation for nav brand */
 .nav-glitch {
   animation: glitch-nav 2s infinite;
 }
+
+.navbar-toggler {
+    border-color: var(--green); /* Optional: change border color */
+  }
+  
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 159, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
 
 @keyframes glitch-nav {
   0%   { text-shadow: 0 0 1px var(--pink), 0 0 2px var(--pink); transform: translate(0, 0); }
@@ -373,6 +381,21 @@ body::after {
   
   @media (max-width: 768px) {
     .side-terminal {
-      display: none !important;
+      display: none;
+    }
+  
+    body {
+      margin-left: 0;
+    }
+  
+    main {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
+  
