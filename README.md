@@ -4,7 +4,6 @@
 - 🐍 Flask for the backend 
 - 🖋️ Poetry for depdencies
 - 💻 Render for deployment
-- 👩‍🚀 A little bit of JS that Chat GPT helped me write :D
 - 🖌️ Custom CSS
 
 
