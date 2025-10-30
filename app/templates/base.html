@@ -53,13 +53,13 @@
   <footer class="text-center py-4 mt-auto">
     <div class="container">
       <p>
-        © 2025 Katie • 
+        © 2025 Katie •
         <a href="https://github.com/ohitsmekatie" target="_blank">
           <i class="fab fa-github"></i> GitHub
-        </a> • 
+        </a> •
         <a href="https://linkedin.com/in/katiesipos" target="_blank">
           <i class="fab fa-linkedin"></i> LinkedIn
-        </a> • 
+        </a> •
         <a href="mailto:katie.sipos@gmail.com">
           <i class="fas fa-envelope"></i> Email
         </a>
@@ -104,9 +104,9 @@
     }
 
     async function getNumberFact() {
-      const res = await fetch("http://numbersapi.com/random/trivia?json");
+      const res = await fetch("https://api.allorigins.win/raw?url=https://numbersapi.com/random/trivia?json");
       const data = await res.json();
-      return data.text;
+      return data.text || data; // some proxies return raw string instead
     }
 
     input.addEventListener('keydown', async function (e) {
