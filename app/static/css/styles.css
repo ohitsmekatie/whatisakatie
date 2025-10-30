@@ -1,19 +1,46 @@
-/* ─────[ Fonts & Root Variables ]───── */
-
+/* ─────[ Fonts & Root Variables + THEME TOKENS ]───── */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+/* LIGHT THEME (default) */
 :root {
-  --bg: #0d0d0d;
+  color-scheme: light dark;
+
+  /* Core brand neons (unchanged across themes) */
   --green: #00ff9f;
-  --pink: #ff49e1;
-  --blue: #00eaff;
-  --text: #f8f8f2;
+  --pink:  #ff49e1;
+  --blue:  #00eaff;
   --accent: var(--pink);
+
+  /* Light surfaces & text */
+  --bg: #ffffff;
+  --text: #111111;
+  --surface: #f8fafc;              /* cards, bars */
+  --border: #e5e7eb;
+
+  /* Terminal & effects */
+  --terminal-bg: #f5f7fb;
+  --terminal-glow: rgba(0, 0, 0, 0.08);
+  --scanline: rgba(0, 0, 0, 0.06);
+
+  /* Background image layer */
+  --grid-bg: #ffffff url("../img/sparkle-bg.png");
+}
+
+/* DARK THEME (hacker vibe) */
+:root[data-theme="dark"] {
+  --bg: #0d0d0d;
+  --text: #f8f8f2;
+  --surface: #0f0f10;
+  --border: #1f2937;
+
+  --terminal-bg: #000000;
+  --terminal-glow: rgba(0, 255, 128, 0.15);
+  --scanline: rgba(255,255,255,0.02);
+
   --grid-bg: #0d0d0d url("../img/sparkle-bg.png");
 }
 
 /* ─────[ Base Layout ]───── */
-
 html, body {
   height: 100%;
   margin: 0;
@@ -39,9 +66,8 @@ main {
 }
 
 /* ─────[ Nav ]───── */
-
 .navbar {
-  background-color: var(--bg);
+  background-color: var(--surface);
   border-bottom: 2px solid var(--pink);
 }
 
@@ -66,13 +92,12 @@ main {
 }
 
 .navbar-toggler {
-    border-color: var(--green); /* Optional: change border color */
-  }
-  
+  border-color: var(--green);
+}
+
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 159, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-  }
-  
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 159, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
 
 @keyframes glitch-nav {
   0%   { text-shadow: 0 0 1px var(--pink), 0 0 2px var(--pink); transform: translate(0, 0); }
@@ -98,30 +123,25 @@ main {
   text-shadow: 0 0 2px var(--pink), 0 0 4px var(--pink);
 }
 
-
 /* ─────[ Footer ]───── */
-
-
 footer a {
-    color: var(--blue);
-    text-decoration: none;
-    margin: 0 0.25rem;
-  }
-  
-  footer a:hover {
-    color: var(--green);
-    text-shadow: 0 0 2px var(--green), 0 0 4px var(--green);
-  }
-  
-  footer i {
-    margin-right: 0.25rem;
-    text-shadow: 0 0 2px var(--blue), 0 0 3px var(--blue);
-    transition: text-shadow 0.2s ease, color 0.2s ease;
-  }
-  
+  color: var(--blue);
+  text-decoration: none;
+  margin: 0 0.25rem;
+}
+
+footer a:hover {
+  color: var(--green);
+  text-shadow: 0 0 2px var(--green), 0 0 4px var(--green);
+}
+
+footer i {
+  margin-right: 0.25rem;
+  text-shadow: 0 0 2px var(--blue), 0 0 3px var(--blue);
+  transition: text-shadow 0.2s ease, color 0.2s ease;
+}
 
 /* ─────[ Glitch Heading ]───── */
-
 .glitch-title {
   font-size: 3rem;
   color: var(--pink);
@@ -140,7 +160,6 @@ footer a {
 }
 
 /* ─────[ ASCII Divider ]───── */
-
 .ascii-divider {
   color: var(--green);
   font-size: 1rem;
@@ -150,7 +169,6 @@ footer a {
 }
 
 /* ─────[ Resume Iframe ]───── */
-
 .resume-embed-container {
   width: 100%;
   max-width: 900px;
@@ -162,7 +180,7 @@ footer a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0d0d0d;
+  background-color: var(--bg);
   overflow: hidden;
 }
 
@@ -173,9 +191,8 @@ footer a {
 }
 
 /* ─────[ Intro Container (Index) ]───── */
-
 .intro-container {
-  background: rgba(0, 0, 0, 0.85);
+  background: color-mix(in oklab, var(--surface) 90%, transparent);
   border-radius: 0.5rem;
   padding: 2rem;
   max-width: 700px;
@@ -212,7 +229,6 @@ footer a {
 }
 
 /* ─────[ Terminal Project Cards ]───── */
-
 .terminal-card {
   border-radius: 0.5rem;
   padding: 1rem;
@@ -224,11 +240,11 @@ footer a {
 }
 
 .terminal-screen {
-  background-color: #000;
+  background-color: var(--terminal-bg);
   padding: 1rem;
   border-radius: 0.25rem;
   flex-grow: 1;
-  box-shadow: inset 0 0 10px rgba(0, 255, 128, 0.15);
+  box-shadow: inset 0 0 10px var(--terminal-glow);
 }
 
 /* Green Variant */
@@ -240,7 +256,7 @@ footer a {
 .terminal-green .terminal-screen {
   color: var(--green);
   border: 1px solid var(--green);
-  box-shadow: inset 0 0 10px rgba(0, 255, 128, 0.3);
+  box-shadow: inset 0 0 10px color-mix(in oklab, var(--green) 30%, transparent);
 }
 
 .terminal-green h2 {
@@ -262,7 +278,7 @@ footer a {
 .terminal-blue .terminal-screen {
   color: var(--blue);
   border: 1px solid var(--blue);
-  box-shadow: inset 0 0 10px rgba(0, 234, 255, 0.3);
+  box-shadow: inset 0 0 10px color-mix(in oklab, var(--blue) 30%, transparent);
 }
 
 .terminal-blue h2 {
@@ -298,15 +314,14 @@ footer a {
 }
 
 /* ─────[ CRT Scanline Overlay ]───── */
-
 body::after {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.02),
-    rgba(255,255,255,0.02) 1px,
+    var(--scanline),
+    var(--scanline) 1px,
     transparent 1px,
     transparent 2px
   );
@@ -317,85 +332,83 @@ body::after {
 }
 
 /* ─────[ Floating terminal ]───── */
-
 .side-terminal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100vh;
-    background: #000;
-    border-right: 3px solid var(--blue);
-    box-shadow: 4px 0 12px rgba(0, 234, 255, 0.4);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    font-family: 'VT323', monospace;
-    color: var(--green);
-    font-size: 1.1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: var(--terminal-bg);
+  border-right: 3px solid var(--blue);
+  box-shadow: 4px 0 12px color-mix(in oklab, var(--blue) 40%, transparent);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  font-family: 'VT323', monospace;
+  color: var(--green);
+  font-size: 1.1rem;
+}
+
+.terminal-header {
+  color: var(--pink);
+  text-align: center;
+  font-size: 1.3rem;
+  text-shadow: 0 0 2px var(--pink);
+  margin-bottom: 1rem;
+}
+
+.terminal-output {
+  flex-grow: 1;
+  overflow-y: auto;
+  background: color-mix(in oklab, var(--bg) 90%, #0000);
+  border: 1px solid var(--green);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 8px color-mix(in oklab, var(--green) 20%, transparent);
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-input-row input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--green);
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.prompt-symbol {
+  color: var(--blue);
+  font-weight: bold;
+  text-shadow: 0 0 2px var(--blue);
+  font-size: 1.2rem;
+}
+
+/* ─────[ Responsive ]───── */
+@media (max-width: 768px) {
+  .side-terminal {
+    display: none;
   }
 
-  
-  .terminal-header {
-    color: var(--pink);
-    text-align: center;
-    font-size: 1.3rem;
-    text-shadow: 0 0 2px var(--pink);
-    margin-bottom: 1rem;
+  body {
+    margin-left: 0;
   }
-  
-  .terminal-output {
-    flex-grow: 1;
-    overflow-y: auto;
-    background: #0d0d0d;
-    border: 1px solid var(--green);
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border-radius: 0.25rem;
-    box-shadow: inset 0 0 8px rgba(0,255,128,0.2);
+
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  
-  .terminal-input-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  
-  .terminal-input-row input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--green);
-    font-family: inherit;
-    font-size: inherit;
-  }
-  
-  .prompt-symbol {
-    color: var(--blue);
-    font-weight: bold;
-    text-shadow: 0 0 2px var(--blue);
-    font-size: 1.2rem;
-  }
-  
-  @media (max-width: 768px) {
-    .side-terminal {
-      display: none;
-    }
-  
-    body {
-      margin-left: 0;
-    }
-  
-    main {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-  
-    .container {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-  }
-  
+}
