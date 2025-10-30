@@ -5,39 +5,25 @@
 :root {
   color-scheme: light dark;
 
-  /* Core brand neons (unchanged across themes) */
+  /* Core brand neons (unchanged) */
   --green: #00ff9f;
   --pink:  #ff49e1;
   --blue:  #00eaff;
   --accent: var(--pink);
 
-  /* Light surfaces & text */
-  --bg: #ffffff;
-  --text: #111111;
-  --surface: #f8fafc;              /* cards, bars */
-  --border: #e5e7eb;
+  /* Light (cream/gray) theme */
+  --bg: #f4f3ef;            /* main background */
+  --surface: #faf9f6;       /* navbar, cards */
+  --text: #1a1a1a;          /* readable but not pure black */
+  --border: #d9d5cc;        /* subtle warm gray */
 
-  /* Terminal & effects */
-  --terminal-bg: #f5f7fb;
-  --terminal-glow: rgba(0, 0, 0, 0.08);
-  --scanline: rgba(0, 0, 0, 0.06);
+  /* Terminals & overlays */
+  --terminal-bg: #efede9;
+  --terminal-glow: rgba(0, 0, 0, 0.05);
+  --scanline: rgba(0, 0, 0, 0.04);
 
-  /* Background image layer */
-  --grid-bg: #ffffff url("../img/sparkle-bg.png");
-}
-
-/* DARK THEME (hacker vibe) */
-:root[data-theme="dark"] {
-  --bg: #0d0d0d;
-  --text: #f8f8f2;
-  --surface: #0f0f10;
-  --border: #1f2937;
-
-  --terminal-bg: #000000;
-  --terminal-glow: rgba(0, 255, 128, 0.15);
-  --scanline: rgba(255,255,255,0.02);
-
-  --grid-bg: #0d0d0d url("../img/sparkle-bg.png");
+  /* Background sparkle image (unchanged) */
+  --grid-bg: #f4f3ef url("../img/sparkle-bg.png");
 }
 
 /* ─────[ Base Layout ]───── */
