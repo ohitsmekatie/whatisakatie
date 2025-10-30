@@ -103,12 +103,6 @@
       return data.fact;
     }
 
-    async function getNumberFact() {
-      const res = await fetch("https://api.allorigins.win/raw?url=https://numbersapi.com/random/trivia?json");
-      const data = await res.json();
-      return data.text || data; // some proxies return raw string instead
-    }
-
     input.addEventListener('keydown', async function (e) {
       if (e.key === 'Enter') {
         const command = input.value.trim().toLowerCase();
@@ -126,8 +120,6 @@
           message = await getFact();
         } else if (command === 'catfact') {
           message = await getCatFact();
-        } else if (command === 'numberfact') {
-          message = await getNumberFact();
         } else if (command === 'clear') {
           output.innerHTML = '';
           return;
@@ -136,7 +128,6 @@
   - joke
   - fact
   - catfact
-  - numberfact
   - help
   - clear`;
         } else {
