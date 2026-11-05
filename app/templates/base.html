@@ -20,6 +20,7 @@
         <li><a href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}aria-current="page"{% endif %}>About</a></li>
         <li><a href="{{ url_for('projects') }}" {% if request.endpoint == 'projects' %}aria-current="page"{% endif %}>Projects</a></li>
         <li><a href="{{ url_for('resume') }}" {% if request.endpoint == 'resume' %}aria-current="page"{% endif %}>Resume</a></li>
+        <li><a href="{{ url_for('fun') }}" {% if request.endpoint == 'fun' %}aria-current="page"{% endif %}>Fun Thing</a></li>
       </ul>
     </nav>
   </header>

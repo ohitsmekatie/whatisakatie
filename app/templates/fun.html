@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Fun Thing - what is a katie{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <p class="eyebrow">roll for initiative</p>
+  <h1>Fun Thing</h1>
+  <p>A random adventurer, with stats for the skills that actually matter.</p>
+</header>
+
+<article class="char-sheet" id="char-sheet" aria-live="polite">
+  <div class="char-head">
+    <h2 class="char-name" id="char-name">&nbsp;</h2>
+    <p class="char-meta"><span id="char-race"></span> <span class="char-dot" aria-hidden="true">✦</span> <span id="char-class"></span></p>
+  </div>
+
+  <ul class="char-stats" id="char-stats"></ul>
+
+  <button type="button" class="roll-btn" id="roll-btn">
+    <span class="roll-die" aria-hidden="true">⬢</span> Roll a new character
+  </button>
+</article>
+
+<script>
+  (function () {
+    const firstNames = [
+      "Brindle", "Quillon", "Mags", "Zephyrine", "Tobble", "Orla", "Grimbald", "Nova",
+      "Pip", "Thessaly", "Bort", "Juniper", "Xandra", "Fennick", "Lark", "Ozzie",
+      "Wren", "Captain Dave", "Seraphina", "Gus"
+    ];
+    const lastNames = [
+      "Mossfoot", "Starwhistle", "Thundercrumb", "of the Cul-de-sac", "Voidbottom",
+      "Picklebane", "Nebulark", "Underbridge", "the Mildly Cursed", "Quasarson",
+      "Fernwhistle", "Copperkettle", "the Overdue", "Moonmuffin", "Glimmerfax",
+      "Rustbucket", "the Twice-Exiled", "Sprocketeer"
+    ];
+    const races = [
+      "Moon Elf", "Space Dwarf", "Half-Goblin", "Sentient Teapot", "Possumfolk",
+      "Disgruntled Android", "Cloud Giant (Small)", "Haunted Toaster", "Lizardfolk Accountant",
+      "Mushroom Person", "Retired Starship AI", "Tiefling", "Gnome in a Trench Coat",
+      "Very Old Dragon (Napping)", "Time Traveler (Lost)"
+    ];
+    const classes = [
+      "Spreadsheet Wizard", "Bard of Mild Inconvenience", "Barbarian (Retired)",
+      "Snack Paladin", "Rogue Who Apologizes", "Starship Janitor", "Druid of Houseplants",
+      "Cleric of the Cat", "Query Sorcerer", "Ranger of the Parking Lot",
+      "Warlock (Pact with a Raccoon)", "Monk of Infinite Naps", "Artificer of Duct Tape",
+      "Fighter (Mostly Arguments)", "Astrologer of Questionable Accuracy"
+    ];
+    const stats = [
+      "Eating a sandwich while upside down",
+      "Parallel parking a dragon",
+      "Folding a fitted sheet",
+      "Petting the cat without getting bitten",
+      "Explaining the plot of a movie correctly",
+      "Remembering where they left their keys",
+      "Being polite to the ship's computer",
+      "Carrying all the groceries in one trip",
+      "Keeping a sourdough starter alive",
+      "Small talk with a lich",
+      "Finding the matching tupperware lid",
+      "Sneaking past a sleeping dog",
+      "Running DELETE without a WHERE clause (confidently)",
+      "Untangling headphone cords",
+      "Escaping the group chat",
+      "Navigating by the stars (and a phone)",
+      "Bargaining with a wizard at a yard sale",
+      "Rolling a natural 20 when it doesn't matter",
+      "Reading the terms and conditions",
+      "Holding the door for a mimic",
+      "Resisting one more board game",
+      "Pronouncing \"Worcestershire\"",
+      "Surviving a Monday",
+      "Translating alien small talk",
+      "Not touching the glowing button",
+      "Assembling flat-pack furniture",
+      "Dodging a meeting that could have been an email",
+      "Staying awake through the lore dump"
+    ];
+
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+    function sample(arr, n) {
+      const copy = arr.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy.slice(0, n);
+    }
+
+    // 3d6, turned into a tabletop-style modifier (-4 to +4)
+    function rollModifier() {
+      const total = 3 + Math.floor(Math.random() * 6) + Math.floor(Math.random() * 6) + Math.floor(Math.random() * 6);
+      return Math.floor((total - 10) / 2);
+    }
+
+    function formatMod(mod) {
+      return mod > 0 ? "+" + mod : mod < 0 ? "−" + Math.abs(mod) : "+0";
+    }
+
+    const sheet = document.getElementById("char-sheet");
+    const nameEl = document.getElementById("char-name");
+    const raceEl = document.getElementById("char-race");
+    const classEl = document.getElementById("char-class");
+    const statsEl = document.getElementById("char-stats");
+
+    function roll() {
+      nameEl.textContent = pick(firstNames) + " " + pick(lastNames);
+      raceEl.textContent = pick(races);
+      classEl.textContent = pick(classes);
+
+      statsEl.innerHTML = "";
+      sample(stats, 6).forEach(label => {
+        const mod = rollModifier();
+        const li = document.createElement("li");
+        const name = document.createElement("span");
+        name.className = "stat-name";
+        name.textContent = label;
+        const val = document.createElement("span");
+        val.className = "stat-mod" + (mod > 0 ? " pos" : mod < 0 ? " neg" : "");
+        val.textContent = formatMod(mod);
+        li.append(name, val);
+        statsEl.appendChild(li);
+      });
+
+      sheet.classList.remove("rolled");
+      void sheet.offsetWidth; // restart the animation
+      sheet.classList.add("rolled");
+    }
+
+    document.getElementById("roll-btn").addEventListener("click", roll);
+    roll();
+  })();
+</script>
+{% endblock %}

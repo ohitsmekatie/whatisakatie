@@ -16,3 +16,7 @@ def projects():
 @app.route("/resume")
 def resume():
     return render_template("resume.html")
+
+@app.route("/fun")
+def fun():
+    return render_template("fun.html")
