@@ -2,116 +2,75 @@
 {% block title %}Projects - what is a katie{% endblock %}
 
 {% block content %}
-<div class="text-center mb-5">
-   <h1 class="glitch-title">~ PROJECTS ~</h1>
-   <p> The best place to look is my GitHub and Linkedin but here are a few things i've done! </p>
-</div>
+<header class="page-header">
+  <p class="eyebrow">quest log</p>
+  <h1>Projects</h1>
+  <p>The best place to look is my GitHub and Linkedin but here are a few things i've done!</p>
+</header>
 
-<div class="container">
-  <div class="row g-4">
+<div class="project-grid">
 
-    <!-- Project 1 -->
-    <div class="col-md-4">
-      <div class="terminal-card terminal-green">
-        <div class="terminal-screen">
-          <h2>✨ Lore & More</h2>
-          <ul>
-            <li>A random generator site for RPG game prep & world building.</li>
-            <li>Poetry for dependency management</li>
-            <li>Built with Flask + Google Sheets</li>
-          </ul>
-        </div>
-        <div class="terminal-links">
-          <a href="https://www.ohitsmetables.com" target="_blank">🌐 Live Site</a>
-          <a href="https://www.github.com/ohitsmekatie/ohitsmetables" target="_blank">💻 GitHub</a>
-        </div>
-      </div>
+  <article class="project-card">
+    <span class="card-num" aria-hidden="true">No. 01</span>
+    <h2>Lore & More</h2>
+    <ul>
+      <li>A random generator site for RPG game prep & world building.</li>
+      <li>Poetry for dependency management</li>
+      <li>Built with Flask + Google Sheets</li>
+    </ul>
+    <div class="project-links">
+      <a href="https://www.ohitsmetables.com" target="_blank" rel="noopener">Live Site</a>
+      <a href="https://www.github.com/ohitsmekatie/ohitsmetables" target="_blank" rel="noopener">GitHub</a>
     </div>
+  </article>
 
-    <!-- Project 2 -->
-    <div class="col-md-4">
-      <div class="terminal-card terminal-blue">
-        <div class="terminal-screen">
-          <h2>✨ dbt Sample Project</h2>
-          <ul>
-            <li>A sample project using public data & dbt core. Follows dbt best practices for structuring & naming. In a more complex project I would use macros, testing, and other advanced dbt functionality</li>
-          </ul>
-        </div>
-        <div class="terminal-links">
-          <a href="https://github.com/ohitsmekatie/dbt-sample-project" target="_blank">💻 GitHub</a>
-        </div>
-      </div>
+  <article class="project-card">
+    <span class="card-num" aria-hidden="true">No. 02</span>
+    <h2>dbt Sample Project</h2>
+    <ul>
+      <li>A sample project using public data & dbt core. Follows dbt best practices for structuring & naming. In a more complex project I would use macros, testing, and other advanced dbt functionality</li>
+    </ul>
+    <div class="project-links">
+      <a href="https://github.com/ohitsmekatie/dbt-sample-project" target="_blank" rel="noopener">GitHub</a>
     </div>
+  </article>
 
-    <!-- Project 3 -->
-    <div class="col-md-4">
-      <div class="terminal-card terminal-green">
-        <div class="terminal-screen">
-          <h2>✨ SQL Snippets</h2>
-          <ul>
-            <li>It's hard to show your SQL work! These are some snippets of advanced SQL snippets and concepts that i've used in work scenarios</li>
-          </ul>
-        </div>
-        <div class="terminal-links">
-          <a href="https://github.com/ohitsmekatie/code-examples" target="_blank">💻 GitHub</a>
-        </div>
-      </div>
+  <article class="project-card">
+    <span class="card-num" aria-hidden="true">No. 03</span>
+    <h2>SQL Snippets</h2>
+    <ul>
+      <li>It's hard to show your SQL work! These are some snippets of advanced SQL snippets and concepts that i've used in work scenarios</li>
+    </ul>
+    <div class="project-links">
+      <a href="https://github.com/ohitsmekatie/code-examples" target="_blank" rel="noopener">GitHub</a>
     </div>
+  </article>
 
-    <!-- Project 4 -->
-    <div class="col-md-4">
-        <div class="terminal-card terminal-blue">
-          <div class="terminal-screen">
-            <h2>✨ UFO Sighting Analysis</h2>
-            <ul>
-              <li>Digging into the public dataset on UFO sightings</li>
-              <li>Walks through my process for cleaning and understanding a new dataset</li>
-              <li>Python, SQL, basic data visualization</li>
-            </ul>
-          </div>
-          <div class="terminal-links">
-            <a href="https://app.hex.tech/katiesipos/app/0a4a8c6d-2388-45ac-979c-543e9cb302ef/latest" target="_blank">🌐 Live Site</a>
-          </div>
-        </div>
-      </div>
+  <article class="project-card">
+    <span class="card-num" aria-hidden="true">No. 04</span>
+    <h2>UFO Sighting Analysis</h2>
+    <ul>
+      <li>Digging into the public dataset on UFO sightings</li>
+      <li>Walks through my process for cleaning and understanding a new dataset</li>
+      <li>Python, SQL, basic data visualization</li>
+    </ul>
+    <div class="project-links">
+      <a href="https://app.hex.tech/katiesipos/app/0a4a8c6d-2388-45ac-979c-543e9cb302ef/latest" target="_blank" rel="noopener">Live Site</a>
+    </div>
+  </article>
 
-       <!-- Project 5 -->
-       <!-- <div class="col-md-4">
-        <div class="terminal-card terminal-green">
-          <div class="terminal-screen">
-            <h2>✨ Another Cool Thing</h2>
-            <ul>
-              <li>Placeholder</li>
-              <li>Placeholder</li>
-              <li>Placeholder</li>
-            </ul>
-          </div>
-          <div class="terminal-links">
-            <a href="#" target="_blank">🌐 Live Site</a>
-            <a href="#" target="_blank">💻 GitHub</a>
-          </div>
-        </div>
-      </div> -->
+  <!-- Template for a new project:
+  <article class="project-card">
+    <h2>Another Cool Thing</h2>
+    <ul>
+      <li>Placeholder</li>
+    </ul>
+    <div class="project-links">
+      <a href="#" target="_blank" rel="noopener">Live Site</a>
+      <a href="#" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </article>
+  -->
 
-    <!-- Project 6-->
-    <!-- <div class="col-md-4">
-        <div class="terminal-card terminal-blue">
-          <div class="terminal-screen">
-            <h2>✨ Another Cool Thing</h2>
-            <ul>
-              <li>Placeholder</li>
-              <li>Placeholder</li>
-              <li>Placeholder</li>
-            </ul>
-          </div>
-          <div class="terminal-links">
-            <a href="#" target="_blank">🌐 Live Site</a>
-            <a href="#" target="_blank">💻 GitHub</a>
-          </div>
-        </div>
-      </div> -->
-
-  </div>
 </div>
 {% endblock %}
-
